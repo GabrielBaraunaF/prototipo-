@@ -55,13 +55,17 @@ public class RoomController {
         return roomFacade.isRoomAvailable(sessionDTO);
     }
 
-
     @Operation(summary = "se necessario ",
             description = "procura session especifica"
     )
     @GetMapping("/session/{id}")
     public Session findSession(@PathVariable Integer id){
         return roomFacade.findSessionById(id);
+    }
+
+    @GetMapping("/session/list")
+    public List<Session> sessionList(){
+        return roomFacade.sessionList();
     }
 
     private boolean hasRole(Authentication authentication, String roleName) {

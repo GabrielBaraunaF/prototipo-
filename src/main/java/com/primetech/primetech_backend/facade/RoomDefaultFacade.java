@@ -75,4 +75,13 @@ public class RoomDefaultFacade implements RoomFacade {
         Room room = roomService.findById(sessionDTO.getRoomId());
         return sessionService.isRoomAvailable(room, sessionDTO.getDate(), sessionDTO.getStartTime(), sessionDTO.getEndTime());
     }
+
+    @Override
+    public List<Session> sessionList(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        User user = userService.findUserByEmail(email);
+        return sessionService.sessionList(user);
+    }
 }

@@ -25,4 +25,6 @@ public interface RoomFacade {
     Session findSessionById(Integer id);
 
     Boolean isRoomAvailable(SessionDTO sessionDTO);
+
+    List<Session> sessionList();
 }

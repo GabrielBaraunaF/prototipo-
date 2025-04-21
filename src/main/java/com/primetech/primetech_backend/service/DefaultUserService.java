@@ -39,6 +39,7 @@ public class DefaultUserService implements UserService {
     @Override
     public List<UserResponseDTO> findAll() {
         List<User> lista= userRepository.findAll();
+        lista.removeIf(user -> user.getRoles().stream().anyMatch(role ->role.getId()==2));
         return lista.stream().map(this::getUserResponseDTO).collect(Collectors.toList());
     }
 

@@ -44,7 +44,7 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
+//    @PreAuthorize("hasRole('ADMINISTRADOR')")
     @GetMapping("/list")
     public List<UserResponseDTO> findAll() {
         return userFacade.findAll();

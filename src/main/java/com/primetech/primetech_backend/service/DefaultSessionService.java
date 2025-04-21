@@ -37,6 +37,11 @@ public class DefaultSessionService implements SessionService {
         return repository.findEspefic(roomID, timeslotID);
     }
 
+    @Override
+    public List<Session> sessionList(User user){
+        return repository.findByuserId(user);
+    }
+
 
     private Session convertToSession(SessionDTO sessionDTO){
         Session session = new Session();
