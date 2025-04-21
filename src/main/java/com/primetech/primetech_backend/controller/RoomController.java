@@ -1,0 +1,73 @@
+package com.primetech.primetech_backend.controller;
+
+
+import com.primetech.primetech_backend.dto.RoomavailabityDTO;
+import com.primetech.primetech_backend.dto.SessionDTO;
+import com.primetech.primetech_backend.entity.Room;
+import com.primetech.primetech_backend.entity.Session;
+import com.primetech.primetech_backend.facade.RoomFacade;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.method.P;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/room")
+public class RoomController {
+
+    @Autowired
+    private RoomFacade roomFacade;
+
+    @PostMapping("/save")
+    public ResponseEntity creteRoom(@RequestBody Room room){
+        roomFacade.createRoom(room);
+        return ResponseEntity.ok("funcionou");
+    }
+
+
+    @Operation(summary = "listar todas as salas",
+            description = "listar todas as salas"
+    )
+    @GetMapping("/list")
+    public List<Room> findAll() {
+        return roomFacade.roomList();
+    }
+
+
+    @Operation(summary = "Criar nova Sessao(reservar sala)",
+            description = "Criar nova Sessao"
+    )
+    @PostMapping("/session")
+    public ResponseEntity saveSession(@RequestBody SessionDTO sessionDTO){
+        roomFacade.createSession(sessionDTO);
+        return ResponseEntity.ok("funcionou");
+    }
+
+    @PostMapping("/available")
+    public Boolean isRoomAvailable(@RequestBody SessionDTO sessionDTO){
+        return roomFacade.isRoomAvailable(sessionDTO);
+    }
+
+
+    @Operation(summary = "se necessario ",
+            description = "procura session especifica"
+    )
+    @GetMapping("/session/{id}")
+    public Session findSession(@PathVariable Integer id){
+        return roomFacade.findSessionById(id);
+    }
+
+    private boolean hasRole(Authentication authentication, String roleName) {
+        return authentication.getAuthorities().stream()
+                .anyMatch(authority -> authority.getAuthority().equals(roleName));
+    }
+
+
+}

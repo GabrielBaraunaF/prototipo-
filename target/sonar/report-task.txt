@@ -1,0 +1,6 @@
+projectKey=com.primetech:primetech-backend
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=com.primetech%3Aprimetech-backend
+ceTaskId=0f28b0e8-a116-477a-a496-461afcf5bce5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=0f28b0e8-a116-477a-a496-461afcf5bce5
