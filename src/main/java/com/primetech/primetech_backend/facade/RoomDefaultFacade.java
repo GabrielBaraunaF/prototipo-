@@ -21,9 +21,6 @@ public class RoomDefaultFacade implements RoomFacade {
     private RoomService roomService;
 
     @Autowired
-    private RoomAvailabityService roomAvailabityService;
-
-    @Autowired
     private SessionService sessionService;
 
     @Autowired
@@ -34,16 +31,11 @@ public class RoomDefaultFacade implements RoomFacade {
         roomService.save(room);
     }
 
-
     @Override
     public List<Room> roomList() {
         return roomService.listarSalas();
     }
 
-    @Override
-    public RoomavailabityDTO roomListHour(Integer roomId) {
-        return roomAvailabityService.listarHorarios(roomId);
-    }
 
     @Transactional
     @Override
@@ -60,10 +52,6 @@ public class RoomDefaultFacade implements RoomFacade {
 
     }
 
-    @Override
-    public Session findSessionByHour(Integer roomId, Integer timeslotId) {
-        return sessionService.findEspecif(roomId, timeslotId);
-    }
 
     @Override
     public Session findSessionById(Integer id) {

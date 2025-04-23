@@ -15,12 +15,7 @@ public interface RoomFacade {
 
     List<Room> roomList();
 
-    RoomavailabityDTO roomListHour(Integer roomId);
-
     void createSession(SessionDTO sessionDTO);
-
-    Session findSessionByHour(Integer roomId, Integer timeslotId);
-
 
     Session findSessionById(Integer id);
 
