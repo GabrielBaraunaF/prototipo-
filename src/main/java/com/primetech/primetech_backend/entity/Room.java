@@ -14,11 +14,16 @@ public class Room {
 
     private String capacity;
 
-    private String type;
-
     private String name;
 
     private String code;
 
     private String description;
+
+    @Column(name = "maintenance_reason")
+    private String maintenanceReason;
+
+    @Column(name = "is_Available")
+    private Boolean isAvailable;
+
 }

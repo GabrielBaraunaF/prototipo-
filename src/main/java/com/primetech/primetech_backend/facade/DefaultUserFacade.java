@@ -55,6 +55,7 @@ public class DefaultUserFacade implements UserFacade {
         UserResponseDTO userResponseDTO = new UserResponseDTO();
         userResponseDTO.setUsername(user.getUsername());
         userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setSchool(user.getSchool());
         if (user.getRoles() != null) {
             List<String> roles = user.getRoles().stream()
                     .map(Role::getName)

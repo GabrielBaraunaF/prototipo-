@@ -34,4 +34,6 @@ public class Session {
     @Column(name = "end_Time")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm", locale = "pt-BR", timezone = "Brazil/East")
     private LocalTime endTime;
+
+    private Boolean confirmed;
 }

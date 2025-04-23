@@ -11,6 +11,8 @@ public class UserResponseDTO {
 
     private String email;
 
+    private String school;
+
     private List<String> roles;
 
 }

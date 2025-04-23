@@ -1,10 +1,11 @@
  CREATE TABLE IF NOT EXISTS room (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   capacity INT NOT NULL,
-  type VARCHAR(10) NOT NULL,
   name VARCHAR(100) NOT NULL,
   code VARCHAR(20) NOT NULL,
-  description TEXT
+  description TEXT,
+  maintenance_reason VARCHAR(50) NULL,
+  is_Available TINYINT NULL
   );
 
 
@@ -20,6 +21,7 @@ CREATE TABLE IF NOT EXISTS Session (
   date DATETIME NOT NULL,
   start_time TIME NOT NULL,
   end_time TIME NOT NULL,
+  confirmed TINYINT NULL,
   INDEX fk_room_id_idx (room_id ASC) VISIBLE,
   INDEX fk_users_id_idx (user_id ASC) VISIBLE,
   CONSTRAINT fk_room_id

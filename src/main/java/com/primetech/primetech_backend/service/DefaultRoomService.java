@@ -21,6 +21,7 @@ public class DefaultRoomService implements RoomService {
 
     @Override
     public void save(Room room){
+        room.setIsAvailable(true);
         roomRepository.save(room);
     }
 
