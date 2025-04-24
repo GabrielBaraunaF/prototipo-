@@ -40,7 +40,17 @@ public class RoomDefaultFacade implements RoomFacade {
 
     @Override
     public List<Room> roomList() {
+        roomListAvailable();
         return roomService.listarSalas();
+    }
+
+    @Override
+    public List<Room> roomListAvailable(){
+        List<Room> roomList= roomService.listarSalas();
+
+        System.out.println(roomList.removeIf(room -> room.getIsAvailable()==false));
+        System.out.println(roomList);
+        return roomList;
     }
 
 

@@ -45,6 +45,11 @@ public class RoomController {
         return roomFacade.roomList();
     }
 
+    @GetMapping("/list/available")
+    public List<Room> findAllAvaliable() {
+        return roomFacade.roomListAvailable();
+    }
+
 
     @Operation(summary = "Criar nova Sessao(reservar sala)",
             description = "Criar nova Sessao"
