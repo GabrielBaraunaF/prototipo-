@@ -35,6 +35,10 @@ public class RoomDefaultFacade implements RoomFacade {
         Room roomExits = roomService.findById(room.getId());
         roomExits.setIsAvailable(room.getIsAvailable());
         roomExits.setMaintenanceReason(room.getMaintenanceReason());
+        roomExits.setCode(room.getCode());
+        roomExits.setCapacity(room.getCapacity());
+        roomExits.setDescription(room.getDescription());
+        roomExits.setName(room.getName());
         return roomService.update(roomExits);
     }
 
