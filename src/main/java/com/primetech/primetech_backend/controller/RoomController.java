@@ -31,6 +31,11 @@ public class RoomController {
         return ResponseEntity.ok("funcionou");
     }
 
+    @PostMapping("/update")
+    public Room updateRoom(@RequestBody Room room){
+        return roomFacade.updateRoom(room);
+    }
+
 
     @Operation(summary = "listar todas as salas",
             description = "listar todas as salas"
@@ -48,6 +53,11 @@ public class RoomController {
     public ResponseEntity saveSession(@RequestBody SessionDTO sessionDTO){
         roomFacade.createSession(sessionDTO);
         return ResponseEntity.ok("funcionou");
+    }
+
+    @PostMapping("/session/update")
+    public Session updateSession(@RequestBody SessionDTO sessionDTO){
+        return roomFacade.updateSession(sessionDTO);
     }
 
     @PostMapping("/available")

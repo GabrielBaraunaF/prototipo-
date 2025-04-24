@@ -1,6 +1,5 @@
 package com.primetech.primetech_backend.facade;
 
-import com.primetech.primetech_backend.dto.RoomavailabityDTO;
 import com.primetech.primetech_backend.dto.SessionDTO;
 import com.primetech.primetech_backend.entity.Room;
 import com.primetech.primetech_backend.entity.Session;
@@ -29,6 +28,14 @@ public class RoomDefaultFacade implements RoomFacade {
     @Override
     public void createRoom(Room room) {
         roomService.save(room);
+    }
+
+    @Override
+    public Room updateRoom(Room room) {
+        Room roomExits = roomService.findById(room.getId());
+        roomExits.setIsAvailable(room.getIsAvailable());
+        roomExits.setMaintenanceReason(room.getMaintenanceReason());
+        return roomService.update(roomExits);
     }
 
     @Override
@@ -65,11 +72,19 @@ public class RoomDefaultFacade implements RoomFacade {
     }
 
     @Override
-    public List<Session> sessionList(){
+    public List<Session> sessionList() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
         User user = userService.findUserByEmail(email);
         return sessionService.sessionList(user);
+    }
+
+    @Override
+    public Session updateSession(SessionDTO sessionDTO) {
+        System.out.println(sessionDTO.getConfirmed());
+        Session session = sessionService.find(sessionDTO.getRoomId());
+        session.setConfirmed(sessionDTO.getConfirmed());
+        return sessionService.update(session);
     }
 }

@@ -13,6 +13,8 @@ public interface RoomFacade {
 
     void createRoom(Room room);
 
+    Room updateRoom(Room room);
+
     List<Room> roomList();
 
     void createSession(SessionDTO sessionDTO);
@@ -22,4 +24,6 @@ public interface RoomFacade {
     Boolean isRoomAvailable(SessionDTO sessionDTO);
 
     List<Session> sessionList();
+
+    Session updateSession(SessionDTO sessionDTO);
 }

@@ -11,5 +11,7 @@ public interface RoomService {
 
     void save(Room room);
 
+    Room update(Room room);
+
     Room findById(Integer id);
 }

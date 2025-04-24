@@ -26,6 +26,11 @@ public class DefaultRoomService implements RoomService {
     }
 
     @Override
+    public Room update(Room room){
+        return roomRepository.save(room);
+    }
+
+    @Override
     public Room findById(Integer id){
         return roomRepository.findById(id).get();
     }

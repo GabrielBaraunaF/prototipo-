@@ -72,4 +72,9 @@ public class DefaultSessionService implements SessionService {
 
         return true;
     }
+
+    @Override
+    public Session update(Session session) {
+        return repository.save(session);
+    }
 }
