@@ -12,7 +12,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String capacity;
+    private Integer capacity;
 
     private String name;
 
