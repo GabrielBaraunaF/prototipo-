@@ -9,6 +9,8 @@ import java.util.List;
 public interface RoomService {
     List<Room>listarSalas();
 
+    List<Room> listarTodasSalas();
+
     void save(Room room);
 
     Room update(Room room);

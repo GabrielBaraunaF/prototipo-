@@ -22,6 +22,7 @@ public class DefaultSessionService implements SessionService {
     @Override
     public Session save(SessionDTO sessionDTO,User user) {
         Session session = convertToSession(sessionDTO);
+        session.setConfirmed(false);
         session.setUserId(user);
 
         return repository.save(session);
@@ -42,6 +43,10 @@ public class DefaultSessionService implements SessionService {
         return repository.findByuserId(user);
     }
 
+    @Override
+    public List<Session> sessionListAll(){
+        return repository.findAll();
+    }
 
     private Session convertToSession(SessionDTO sessionDTO){
         Session session = new Session();
