@@ -21,6 +21,8 @@ public interface SessionService {
 
     List<Session> sessionList(User user);
 
+    List<Session> sessionListAll();
+
     boolean isRoomAvailable(Room room, Date date, LocalTime start, LocalTime end);
 
     Session update(Session session);

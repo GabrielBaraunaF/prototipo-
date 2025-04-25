@@ -17,6 +17,8 @@ public interface RoomFacade {
 
     List<Room> roomList();
 
+    List<Session> sessionListAll();
+
     List<Room> roomListAvailable();
 
     void createSession(SessionDTO sessionDTO);

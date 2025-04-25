@@ -49,6 +49,12 @@ public class RoomDefaultFacade implements RoomFacade {
     }
 
     @Override
+    public List<Session> sessionListAll() {
+        roomListAvailable();
+        return sessionService.sessionListAll();
+    }
+
+    @Override
     public List<Room> roomListAvailable(){
         List<Room> roomList= roomService.listarSalas();
 

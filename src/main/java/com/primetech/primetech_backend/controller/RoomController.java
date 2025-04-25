@@ -33,6 +33,7 @@ public class RoomController {
 
     @PostMapping("/update")
     public Room updateRoom(@RequestBody Room room){
+        System.out.println("-> " + room.toString());
         return roomFacade.updateRoom(room);
     }
 
@@ -44,6 +45,7 @@ public class RoomController {
     public List<Room> findAll() {
         return roomFacade.roomList();
     }
+
 
     @GetMapping("/list/available")
     public List<Room> findAllAvaliable() {
@@ -82,6 +84,12 @@ public class RoomController {
     public List<Session> sessionList(){
         return roomFacade.sessionList();
     }
+
+    @GetMapping("/session/listall")
+    public List<Session> sessionListAll(){
+        return roomFacade.sessionListAll();
+    }
+
 
     private boolean hasRole(Authentication authentication, String roleName) {
         return authentication.getAuthorities().stream()
